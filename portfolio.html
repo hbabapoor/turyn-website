@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – TURYN Boutique Custom Builder · Sydney</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0c0b09;--cream:#f4efe6;--gold:#b5924a;--gold-light:#cead72;--gold-dim:rgba(181,146,74,.18);--charcoal:#1e1b16;--charcoal2:#252018;--border:rgba(181,146,74,.2);--border-b:rgba(181,146,74,.5);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;background:rgba(12,11,9,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:300;letter-spacing:.38em;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.71rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,230,.72);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:.5rem 1.5rem!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.ham span{width:22px;height:1px;background:var(--cream);display:block;}
+.mmenu{display:none;position:fixed;inset:0;background:var(--black);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mmenu.open{display:flex;}
+.mmenu a{font-size:1.5rem;font-family:'Cormorant Garamond',serif;color:var(--cream);text-decoration:none;}
+.mmenu a:hover{color:var(--gold);}
+.mclose{position:absolute;top:1.5rem;right:2rem;font-size:1.8rem;cursor:pointer;color:var(--gold);}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 4rem 5.5rem;position:relative;overflow:hidden;background:var(--black);}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(181,146,74,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(181,146,74,.035) 1px,transparent 1px);background-size:88px 88px;animation:gd 30s linear infinite;}
+@keyframes gd{from{background-position:0 0}to{background-position:88px 88px}}
+.page-hero-vline{position:absolute;top:0;right:38%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--gold-dim) 30%,var(--gold-dim) 70%,transparent);}
+.page-hero-inner{position:relative;max-width:1360px;margin:0 auto;}
+.breadcrumb{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(244,239,230,.35);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--gold);text-decoration:none;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;line-height:.95;letter-spacing:-.01em;animation:su .9s ease .2s both;}
+@keyframes su{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.page-hero h1 em{font-style:italic;color:var(--gold);}
+.page-hero p{font-size:1rem;font-weight:300;line-height:1.88;color:rgba(244,239,230,.5);max-width:560px;margin-top:2rem;animation:su .9s ease .4s both;}
+.page-hero-wm{position:absolute;right:4rem;bottom:-2rem;font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,14vw,14rem);font-weight:300;color:rgba(181,146,74,.04);line-height:1;pointer-events:none;letter-spacing:-.02em;}
+
+/* FILTER BAR */
+.filter-bar{background:var(--charcoal);border-bottom:1px solid var(--border);padding:1.5rem 4rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;position:sticky;top:76px;z-index:100;}
+.filter-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,239,230,.35);margin-right:.5rem;}
+.filter-btn{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:.45rem 1.1rem;border:1px solid var(--border);color:rgba(244,239,230,.55);background:transparent;cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--black);}
+
+/* PORTFOLIO GRID */
+.port-section{padding:4rem 4rem 6rem;max-width:1360px;margin:0 auto;}
+.port-count{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,239,230,.35);margin-bottom:2.5rem;}
+.port-count span{color:var(--gold);}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+
+/* PROJECT CARD */
+.proj-card{background:var(--charcoal);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s,transform .3s;cursor:pointer;opacity:0;transform:translateY(36px);}
+.proj-card.vis{opacity:1;transform:translateY(0);}
+.proj-card:hover{border-color:var(--gold);transform:translateY(-5px);}
+.proj-card.hidden{display:none;}
+
+/* Card image area */
+.proj-img{height:210px;background:var(--charcoal2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.proj-img-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.proj-img-letter{font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:300;color:rgba(181,146,74,.07);letter-spacing:.1em;user-select:none;}
+.proj-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--charcoal) 0%,rgba(30,27,22,.5) 45%,transparent 100%);}
+.proj-num-badge{position:absolute;top:1rem;left:1rem;z-index:2;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);background:rgba(12,11,9,.75);padding:.35rem .75rem;backdrop-filter:blur(4px);}
+.proj-type-badge{position:absolute;top:1rem;right:1rem;z-index:2;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,230,.6);background:rgba(12,11,9,.75);padding:.35rem .75rem;backdrop-filter:blur(4px);}
+
+/* Card body */
+.proj-body{padding:1.7rem 1.8rem 2.2rem;}
+.proj-address{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;margin-bottom:.35rem;line-height:1.15;}
+.proj-suburb{font-size:.78rem;color:rgba(244,239,230,.4);font-weight:300;margin-bottom:1rem;}
+.proj-scope{font-size:.8rem;color:rgba(244,239,230,.52);line-height:1.72;font-weight:300;border-top:1px solid var(--border);padding-top:1rem;margin-top:.5rem;}
+.proj-arrow{position:absolute;bottom:1.5rem;right:1.5rem;width:33px;height:33px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.85rem;transition:background .25s,border-color .25s;}
+.proj-card:hover .proj-arrow{background:var(--gold);border-color:var(--gold);color:var(--black);}
+
+/* FEATURED (wide card – spans 2 cols) */
+.proj-card.featured{grid-column:span 2;}
+.proj-card.featured .proj-img{height:260px;}
+.proj-card.featured .proj-address{font-size:2rem;}
+
+/* PROJECT MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px);}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--charcoal);border:1px solid var(--border);max-width:820px;width:90%;max-height:85vh;overflow-y:auto;position:relative;transform:translateY(30px);transition:transform .35s;}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-header{padding:2.5rem 3rem 0;border-bottom:1px solid var(--border);padding-bottom:2rem;}
+.modal-proj-num{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;margin-bottom:.35rem;}
+.modal-subtitle{font-size:.82rem;color:rgba(244,239,230,.42);font-style:italic;}
+.modal-body{padding:2.5rem 3rem;}
+.modal-grid{display:grid;grid-template-columns:160px 1fr;gap:2.5rem;align-items:start;}
+.modal-meta{}
+.modal-meta-item{margin-bottom:1.4rem;}
+.modal-meta-item .ml{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.modal-meta-item .mv{font-size:.83rem;color:rgba(244,239,230,.6);font-weight:300;line-height:1.6;}
+.modal-notes{}
+.modal-notes h4{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;}
+.modal-notes p{font-size:.88rem;color:rgba(244,239,230,.65);line-height:1.9;font-weight:300;}
+.modal-close{position:absolute;top:1.5rem;right:1.8rem;width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);font-size:1rem;transition:background .2s,border-color .2s;background:transparent;}
+.modal-close:hover{background:var(--gold);border-color:var(--gold);color:var(--black);}
+
+/* CTA BAND */
+.cta-strip{background:var(--gold);padding:5rem 4rem;text-align:center;}
+.cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;color:var(--black);margin-bottom:1rem;line-height:1.1;}
+.cta-strip p{font-size:.88rem;color:rgba(12,11,9,.55);margin-bottom:2.2rem;font-weight:300;}
+.btn-dk{display:inline-block;background:var(--black);color:var(--cream);padding:.95rem 2.6rem;font-size:.71rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:background .25s;margin:0 .5rem;}
+.btn-dk:hover{background:var(--charcoal);}
+
+/* FOOTER */
+footer{background:#070604;padding:4rem;border-top:1px solid var(--border);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.fb .logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;letter-spacing:.32em;color:var(--gold);display:block;margin-bottom:.85rem;}
+.fb p{font-size:.77rem;color:rgba(244,239,230,.28);line-height:1.88;max-width:265px;font-weight:300;}
+.fb .lic{margin-top:1.1rem;font-size:.62rem;color:rgba(244,239,230,.2);letter-spacing:.07em;}
+.fc h5{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;font-weight:500;}
+.fc ul{list-style:none;}
+.fc ul li{margin-bottom:.65rem;}
+.fc ul li a{font-size:.79rem;color:rgba(244,239,230,.35);text-decoration:none;font-weight:300;transition:color .2s;}
+.fc ul li a:hover{color:var(--gold);}
+.fbtm{background:#070604;border-top:1px solid rgba(181,146,74,.07);padding:1.4rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.fbtm p{font-size:.67rem;color:rgba(244,239,230,.18);letter-spacing:.07em;}
+
+@media(max-width:960px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .ham{display:flex;}
+  .page-hero{padding:8rem 1.5rem 4rem;}
+  .filter-bar{padding:1.2rem 1.5rem;}
+  .port-section{padding:3rem 1.5rem 5rem;}
+  .port-grid{grid-template-columns:1fr;}
+  .proj-card.featured{grid-column:span 1;}
+  .modal{width:95%;max-height:90vh;}
+  .modal-header,.modal-body{padding:1.8rem 1.5rem;}
+  .modal-grid{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr 1fr;padding:3rem 1.5rem;}
+  .fbtm{padding:1.2rem 1.5rem;flex-direction:column;gap:.4rem;text-align:center;}
+  .cta-strip{padding:4rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="mmenu" id="mm">
+  <span class="mclose" onclick="closeMM()">✕</span>
+  <a href="index.html" onclick="closeMM()">Home</a>
+  <a href="about.html" onclick="closeMM()">About</a>
+  <a href="index.html#services" onclick="closeMM()">Services</a>
+  <a href="portfolio.html" onclick="closeMM()">Portfolio</a>
+  <a href="index.html#contact" onclick="closeMM()">Contact</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">TURYN</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Enquire</a></li>
+  </ul>
+  <div class="ham" onclick="openMM()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-vline"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Portfolio</div>
+    <h1>Selected <em>Works.</em></h1>
+    <p>A decade of residential craft across metropolitan Sydney. Fifteen representative projects spanning freestanding homes, knockdown rebuilds, duplex developments, extensions, and renovations.</p>
+  </div>
+  <div class="page-hero-wm">Works</div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="filter('all',this)">All Projects</button>
+  <button class="filter-btn" onclick="filter('freestanding',this)">Freestanding</button>
+  <button class="filter-btn" onclick="filter('knockdown',this)">Knockdown Rebuild</button>
+  <button class="filter-btn" onclick="filter('duplex',this)">Duplex</button>
+  <button class="filter-btn" onclick="filter('extension',this)">Extension & Reno</button>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<div class="port-section">
+  <div class="port-count">Showing <span id="countVis">15</span> of <span>15</span> projects</div>
+  <div class="port-grid" id="portGrid">
+
+    <!-- PROJECT 01 -->
+    <div class="proj-card featured" data-type="duplex" onclick="openModal(0)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 01 / 15</div>
+        <div class="proj-type-badge">Duplex · Joint Venture</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">16 & 18 MacKillop Drive</div>
+        <div class="proj-suburb">Morisset, NSW</div>
+        <div class="proj-scope">Side-by-side double-storey duplex with luxury finishes throughout kitchens, bathrooms, and joinery. TURYN sourced the site, led the development, and delivered both dwellings under a joint-venture arrangement. Both sold within 3 weeks of going to market.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(1)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 02 / 15</div>
+        <div class="proj-type-badge">Freestanding · Luxury</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">7 McMillan Circuit</div>
+        <div class="proj-suburb">Kellyville, NSW</div>
+        <div class="proj-scope">Luxury double-storey freestanding with swimming pool and uniquely sited on one of Kellyville's most distinctive locations.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(2)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 03 / 15</div>
+        <div class="proj-type-badge">Freestanding · Luxury</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">2 Wood Bridge Palace</div>
+        <div class="proj-suburb">Bella Vista, NSW</div>
+        <div class="proj-scope">Corner-block double-storey with gym, swimming pool, and premium finishes throughout.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 04 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(3)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 04 / 15</div>
+        <div class="proj-type-badge">TURYN Development · Three-Storey</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">7 Carrawinya Crescent</div>
+        <div class="proj-suburb">North Kellyville, NSW</div>
+        <div class="proj-scope">TURYN's own development — three-storey freestanding with full-size tennis court and swimming pool. Designed and developed entirely in-house.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 05 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(4)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 05 / 15</div>
+        <div class="proj-type-badge">Specialist NDIS · Three-Storey</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">48 Wood Street</div>
+        <div class="proj-suburb">Lane Cove West, NSW</div>
+        <div class="proj-scope">Three-storey luxury NDIS residence with passenger lift, swimming pool, and full NDIS-compliant accessibility throughout.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 06 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(5)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 06 / 15</div>
+        <div class="proj-type-badge">Freestanding · High-End</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">9 Carrawinya Crescent</div>
+        <div class="proj-suburb">North Kellyville, NSW</div>
+        <div class="proj-scope">Double-storey freestanding with swimming pool and private gymnasium. Premium kitchen, bathroom, and joinery throughout.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 07 -->
+    <div class="proj-card featured" data-type="knockdown" onclick="openModal(6)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 07 / 15</div>
+        <div class="proj-type-badge">Knockdown Rebuild · French Provincial</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">27 Sirius Street</div>
+        <div class="proj-suburb">Dundas, NSW</div>
+        <div class="proj-scope">Luxury knockdown rebuild in classic French provincial style. Double-storey with steeply pitched roof, rendered facade, traditional fenestration, and a swimming pool integrated into the rear landscaped garden.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 08 -->
+    <div class="proj-card" data-type="knockdown" onclick="openModal(7)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 08 / 15</div>
+        <div class="proj-type-badge">Knockdown Rebuild · Hampton</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">26 Wellman Road</div>
+        <div class="proj-suburb">Forestville, NSW</div>
+        <div class="proj-scope">Luxury Hampton-style knockdown rebuild. Double-storey with weatherboard detailing and landscaped pool area. Now one of the area's standout new residences.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 09 -->
+    <div class="proj-card" data-type="extension" onclick="openModal(8)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 09 / 15</div>
+        <div class="proj-type-badge">Extension & Renovation · High-End</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">62 Grace Avenue</div>
+        <div class="proj-suburb">Frenchs Forest, NSW</div>
+        <div class="proj-scope">Comprehensive high-end extension and full renovation. Structural alterations, substantial addition, and new kitchens, bathrooms, joinery and finishes throughout.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 10 -->
+    <div class="proj-card" data-type="extension" onclick="openModal(9)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 10 / 15</div>
+        <div class="proj-type-badge">Extension · Double-Storey + Granny Flat</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">43 Macintosh Road</div>
+        <div class="proj-suburb">Dee Why, NSW</div>
+        <div class="proj-scope">Double-storey luxury extension with pool and spa, plus a self-contained granny flat at the rear. Premium finishes throughout both dwellings.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 11 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(10)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 11 / 15</div>
+        <div class="proj-type-badge">Freestanding · Double-Storey</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">4 Gammel Street</div>
+        <div class="proj-suburb">Rydalmere, NSW</div>
+        <div class="proj-scope">Custom double-storey freestanding with swimming pool. Open-plan living, strong indoor-outdoor connection, delivered foundations to handover.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 12 -->
+    <div class="proj-card" data-type="extension" onclick="openModal(11)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 12 / 15</div>
+        <div class="proj-type-badge">Extension & Renovation · High-End</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">69 Parsonage Road</div>
+        <div class="proj-suburb">Castle Hill, NSW</div>
+        <div class="proj-scope">Comprehensive high-end extension and renovation. Substantial addition, structural reconfiguration, and full interior renovation with new finishes throughout.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 13 -->
+    <div class="proj-card" data-type="knockdown" onclick="openModal(12)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 13 / 15</div>
+        <div class="proj-type-badge">Knockdown Rebuild · Dual-Occupancy</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">1 Kastelan St / 4 Melony St</div>
+        <div class="proj-suburb">Blacktown, NSW</div>
+        <div class="proj-scope">Knockdown rebuild dual-occupancy on a corner block. Two freestanding homes addressing each street frontage, maximising site value.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 14 -->
+    <div class="proj-card" data-type="freestanding" onclick="openModal(13)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 14 / 15</div>
+        <div class="proj-type-badge">Freestanding · Double-Storey</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">103 Rosedale Circuit</div>
+        <div class="proj-suburb">Carnes Hill, NSW</div>
+        <div class="proj-scope">New double-storey freestanding with swimming pool. Formal and informal living zones, four-plus bedrooms, and a layout oriented to rear entertaining.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+    <!-- PROJECT 15 -->
+    <div class="proj-card" data-type="knockdown" onclick="openModal(14)">
+      <div class="proj-img">
+        <div class="proj-img-bg"><div class="proj-img-letter">T</div></div>
+        <div class="proj-num-badge">Project 15 / 15</div>
+        <div class="proj-type-badge">Knockdown Rebuild · High-End</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-address">80 Nirranda Street</div>
+        <div class="proj-suburb">Concord West, NSW</div>
+        <div class="proj-scope">High-end knockdown rebuild. Contemporary double-storey with full entertaining precinct — swimming pool and freestanding cabana with covered seating.</div>
+      </div>
+      <div class="proj-arrow">→</div>
+    </div>
+
+  </div><!-- /port-grid -->
+</div><!-- /port-section -->
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Interested in Working with TURYN?</h2>
+  <p>Book a complimentary consultation with our directors. No obligation, just a genuine conversation.</p>
+  <a href="index.html#contact" class="btn-dk">Start a Conversation</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fb"><span class="logo">TURYN</span><p>Boutique residential builder delivering extraordinary homes across metropolitan Sydney. Led by licensed builders and civil engineers with 17+ years of combined expertise.</p><div class="lic">TURYN Pty Ltd · Lic. 343795C · ABN 60 606 472 593 · ACN 606 472 593</div></div>
+  <div class="fc"><h5>Services</h5><ul><li><a href="index.html#services">Freestanding Homes</a></li><li><a href="index.html#services">Knockdown Rebuilds</a></li><li><a href="index.html#services">Duplex Developments</a></li><li><a href="index.html#services">Extensions & Renovations</a></li><li><a href="index.html#services">Subdivisions</a></li></ul></div>
+  <div class="fc"><h5>Company</h5><ul><li><a href="about.html">About TURYN</a></li><li><a href="about.html#leadership">Leadership</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="index.html#process">Our Process</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+  <div class="fc"><h5>Connect</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Houzz</a></li></ul></div>
+</footer>
+<div class="fbtm"><p>© 2025 TURYN Pty Ltd. All rights reserved.</p><p>Privacy Policy · Terms of Use</p></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <div class="modal-proj-num" id="mNum"></div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-subtitle" id="mSub"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-meta" id="mMeta"></div>
+        <div class="modal-notes" id="mNotes"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openMM(){document.getElementById('mm').classList.add('open');}
+function closeMM(){document.getElementById('mm').classList.remove('open');}
+
+// Scroll reveal
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}});},{threshold:.08});
+document.querySelectorAll('.proj-card').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.08+'s';io.observe(el);});
+
+// Filter
+function filter(type, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards=document.querySelectorAll('.proj-card');
+  let vis=0;
+  cards.forEach(c=>{
+    if(type==='all'||c.dataset.type===type){c.classList.remove('hidden');vis++;}
+    else{c.classList.add('hidden');}
+  });
+  document.getElementById('countVis').textContent=vis;
+}
+
+// Project data for modal
+const projects=[
+  {num:'Project 01 / 15',title:'16 & 18 MacKillop Drive',sub:'Morisset, NSW',type:'Duplex Development · Joint Venture',scope:'Side-by-side double-storey duplex · Luxury finishes · Sold within 3 weeks',location:'Morisset, NSW',notes:'A landmark joint-venture duplex project delivered in Morisset in partnership with one of TURYN\'s private investors. The project comprised two side-by-side double-storey homes finished to a level well above the area benchmark, with luxury specifications throughout the kitchens, bathrooms, and joinery. TURYN sourced the site, led the development, and delivered the build under the JV arrangement — with both dwellings sold within three weeks of going to market, validating the model.'},
+  {num:'Project 02 / 15',title:'7 McMillan Circuit',sub:'Kellyville, NSW',type:'Freestanding Home · Luxury',scope:'Double-storey freestanding · Swimming pool · Uniquely sited',location:'Kellyville, NSW',notes:'A luxury freestanding double-storey residence uniquely sited on McMillan Circuit, Kellyville. The home pairs a striking contemporary facade — with timber-cladded upper level and wide glazing — with a refined dark-and-marble kitchen, a living zone anchored by a feature timber-slat and stone wall, and a private rear swimming pool with frameless glass surround. A standout TURYN delivery in one of Kellyville\'s most distinctive locations.'},
+  {num:'Project 03 / 15',title:'2 Wood Bridge Palace',sub:'Bella Vista, NSW',type:'Freestanding Home · Luxury',scope:'Corner-block double-storey · Gym & swimming pool · Premium finishes',location:'Bella Vista, NSW',notes:'A high-end freestanding double-storey residence on a prominent corner block in the heart of Bella Vista. The brief called for a statement home with strong street presence, generous family living, and integrated wellness amenities. TURYN delivered a fully custom build incorporating a private gymnasium, swimming pool, and premium finishes throughout.'},
+  {num:'Project 04 / 15',title:'7 Carrawinya Crescent',sub:'North Kellyville, NSW',type:'TURYN Development · Three-Storey',scope:'Three-storey freestanding · Swimming pool · Tennis court',location:'North Kellyville, NSW',notes:'TURYN\'s own development project for sale — a unique three-storey freestanding residence built at the heart of North Kellyville. Designed and developed in-house, the home features a full-size tennis court and swimming pool alongside the main dwelling, a rare combination in the suburb. The site required careful planning, retaining works, and staged construction to integrate the recreation areas seamlessly with the architectural envelope.'},
+  {num:'Project 05 / 15',title:'48 Wood Street',sub:'Lane Cove West, NSW',type:'Specialist NDIS Residence · Three-Storey',scope:'Three-storey luxury NDIS dwelling · Swimming pool · Passenger lift',location:'Lane Cove West, NSW',notes:'A purpose-designed three-storey luxury NDIS residence in the heart of Lane Cove West, combining accessible specialist disability accommodation with high-end residential finishes. The build incorporates a passenger lift servicing all three levels, a swimming pool, and full NDIS-compliant accessibility throughout — a technically demanding project that required careful coordination between accessibility consultants, certifiers, and the build team.'},
+  {num:'Project 06 / 15',title:'9 Carrawinya Crescent',sub:'North Kellyville, NSW',type:'Freestanding Home · High-End',scope:'Double-storey freestanding · Swimming pool · Private gymnasium',location:'North Kellyville, NSW',notes:'A high-end double-storey family home in North Kellyville, designed and delivered to exceptional standards across both finishes and amenities. The home incorporates a swimming pool and a fully fitted private gymnasium, with detailed joinery, premium kitchen and bathroom specifications, and a layout planned around indoor-outdoor entertaining.'},
+  {num:'Project 07 / 15',title:'27 Sirius Street',sub:'Dundas, NSW',type:'Knockdown Rebuild · French Provincial',scope:'Double-storey · French provincial style · Swimming pool',location:'Dundas, NSW',notes:'A luxury knockdown-rebuild executed in classic French provincial style on a generous site in Dundas. The double-storey home was designed to capture the proportions and detailing of the period — steeply pitched roof, rendered facade, traditional fenestration — while delivering a fully contemporary internal layout. A swimming pool was integrated into the rear garden as a calm landscaped retreat.'},
+  {num:'Project 08 / 15',title:'26 Wellman Road',sub:'Forestville, NSW',type:'Knockdown Rebuild · Hampton Style',scope:'Double-storey luxury Hampton · Swimming pool',location:'Forestville, NSW',notes:'A luxury knockdown rebuild in the Hampton style, prominently sited at the heart of Forestville. The project replaced an aged dwelling with a freestanding double-storey home featuring weatherboard detailing, traditional Hampton proportions, and a full landscaped pool area at the rear — delivered end-to-end from demolition through to handover, and now one of the area\'s standout new residences.'},
+  {num:'Project 09 / 15',title:'62 Grace Avenue',sub:'Frenchs Forest, NSW',type:'Extension & Renovation · High-End',scope:'Comprehensive extension and full renovation',location:'Frenchs Forest, NSW',notes:'A high-end extension and renovation project in Frenchs Forest, transforming an existing dwelling into a contemporary family home. Scope included structural alterations, a substantial addition, and a full renovation of the existing footprint with new kitchens, bathrooms, joinery, and finishes throughout — among the more comprehensive renovation works in TURYN\'s portfolio.'},
+  {num:'Project 10 / 15',title:'43 Macintosh Road',sub:'Dee Why, NSW',type:'Extension · Double-Storey · With Granny Flat',scope:'Double-storey luxury extension · Pool & spa · Granny flat',location:'Dee Why, NSW',notes:'A high-end double-storey extension to a luxury home at Dee Why, paired with a separate granny flat at the rear of the site. The main residence works delivered new living and bedroom wings finished to a premium specification, with a swimming pool and spa integrated into the landscaped rear yard. The granny flat was delivered as a self-contained secondary dwelling.'},
+  {num:'Project 11 / 15',title:'4 Gammel Street',sub:'Rydalmere, NSW',type:'Freestanding Home · Double-Storey',scope:'Custom double-storey freestanding · Swimming pool',location:'Rydalmere, NSW',notes:'A freestanding double-storey family home delivered in Rydalmere, with a swimming pool integrated into the rear yard. The brief was for a contemporary family residence with generous open-plan living, a well-resolved bedroom layout upstairs, and a strong indoor-outdoor connection to the pool and entertaining area — delivered foundations through to handover by TURYN.'},
+  {num:'Project 12 / 15',title:'69 Parsonage Road',sub:'Castle Hill, NSW',type:'Extension & Renovation · High-End',scope:'Comprehensive high-end extension and renovation',location:'Castle Hill, NSW',notes:'A high-end extension and renovation project in the established Castle Hill area, reworking an existing dwelling into a refined contemporary family home. Scope included a substantial addition, structural reconfiguration of the existing layout, and a comprehensive interior renovation with new finishes throughout — demonstrating TURYN\'s ability to deliver premium renovation work on heritage-style streetscapes.'},
+  {num:'Project 13 / 15',title:'1 Kastelan St / 4 Melony St',sub:'Blacktown, NSW',type:'Knockdown Rebuild · Dual-Occupancy',scope:'Knockdown rebuild · Dual-occupancy on corner block',location:'Blacktown, NSW',notes:'A knockdown rebuild dual-occupancy project on a corner block at the intersection of Kastelan Street and Melony Street, Blacktown. TURYN demolished the existing dwelling and delivered two freestanding homes addressing each street frontage — a planning approach that maximised the site\'s value and delivered two independent residences with strong street presence, each completed to a consistent specification.'},
+  {num:'Project 14 / 15',title:'103 Rosedale Circuit',sub:'Carnes Hill, NSW',type:'Freestanding Home · Double-Storey',scope:'New double-storey freestanding · Swimming pool',location:'Carnes Hill, NSW',notes:'A new freestanding double-storey home in the Carnes Hill area, with an integrated swimming pool to the rear. The home was designed for family living with formal and informal living zones, four-plus bedrooms upstairs, and a layout oriented to the rear pool and entertaining area — delivered end-to-end by TURYN.'},
+  {num:'Project 15 / 15',title:'80 Nirranda Street',sub:'Concord West, NSW',type:'Knockdown Rebuild · High-End',scope:'Double-storey knockdown rebuild · Swimming pool · Cabana',location:'Concord West, NSW',notes:'A high-end knockdown rebuild in Concord West, replacing an existing home with a contemporary double-storey residence. The rear yard was developed as a complete entertaining precinct, incorporating a swimming pool and a freestanding cabana with covered seating — with careful coordination of demolition, structural works, and landscape integration to deliver the finished home to a premium specification.'},
+];
+
+function openModal(i){
+  const p=projects[i];
+  document.getElementById('mNum').textContent=p.num;
+  document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mSub').textContent=p.sub;
+  document.getElementById('mMeta').innerHTML=`
+    <div class="modal-meta-item"><div class="ml">Type</div><div class="mv">${p.type}</div></div>
+    <div class="modal-meta-item"><div class="ml">Scope</div><div class="mv">${p.scope}</div></div>
+    <div class="modal-meta-item"><div class="ml">Location</div><div class="mv">${p.location}</div></div>
+  `;
+  document.getElementById('mNotes').innerHTML=`<h4>Project Notes</h4><p>${p.notes}</p>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOutside(e){
+  if(e.target===document.getElementById('modalOverlay'))closeModal();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

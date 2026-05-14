@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – TURYN Boutique Custom Builder · Sydney</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0c0b09;--cream:#f4efe6;--gold:#b5924a;--gold-light:#cead72;--gold-dim:rgba(181,146,74,.18);--charcoal:#1e1b16;--charcoal2:#252018;--border:rgba(181,146,74,.2);--border-b:rgba(181,146,74,.5);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;background:rgba(12,11,9,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:300;letter-spacing:.38em;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.71rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,230,.72);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:.5rem 1.5rem!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.ham span{width:22px;height:1px;background:var(--cream);display:block;}
+.mmenu{display:none;position:fixed;inset:0;background:var(--black);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mmenu.open{display:flex;}
+.mmenu a{font-size:1.5rem;font-family:'Cormorant Garamond',serif;color:var(--cream);text-decoration:none;}
+.mmenu a:hover{color:var(--gold);}
+.mclose{position:absolute;top:1.5rem;right:2rem;font-size:1.8rem;cursor:pointer;color:var(--gold);}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 4rem 6rem;position:relative;overflow:hidden;background:var(--black);}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(181,146,74,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(181,146,74,.035) 1px,transparent 1px);background-size:88px 88px;animation:gd 30s linear infinite;}
+@keyframes gd{from{background-position:0 0}to{background-position:88px 88px}}
+.page-hero-vline{position:absolute;top:0;right:35%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--gold-dim) 30%,var(--gold-dim) 70%,transparent);}
+.page-hero-inner{position:relative;max-width:1360px;margin:0 auto;}
+.breadcrumb{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(244,239,230,.35);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--gold);text-decoration:none;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;line-height:.95;letter-spacing:-.01em;animation:su .9s ease .2s both;}
+@keyframes su{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.page-hero h1 em{font-style:italic;color:var(--gold);}
+.page-hero p{font-size:1rem;font-weight:300;line-height:1.88;color:rgba(244,239,230,.52);max-width:560px;margin-top:2rem;animation:su .9s ease .4s both;}
+.page-hero-wm{position:absolute;right:4rem;bottom:-2rem;font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,14vw,14rem);font-weight:300;color:rgba(181,146,74,.04);line-height:1;pointer-events:none;letter-spacing:-.02em;}
+
+/* GENERIC */
+section{padding:6rem 4rem;}
+.wrap{max-width:1360px;margin:0 auto;}
+.ew{font-size:.62rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;display:flex;align-items:center;gap:.85rem;}
+.ew::before{content:'';display:block;width:26px;height:1px;background:var(--gold);}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:300;line-height:1.08;margin-bottom:1.4rem;}
+.st em{font-style:italic;color:var(--gold);}
+.sb{font-size:.91rem;font-weight:300;line-height:1.92;color:rgba(244,239,230,.57);max-width:520px;}
+
+/* STORY */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.story-visual{position:relative;height:580px;}
+.story-box-outer{position:absolute;inset:0;border:1px solid var(--border);}
+.story-box-inner{position:absolute;top:2.2rem;left:2.2rem;right:-2.2rem;bottom:-2.2rem;background:var(--charcoal);overflow:hidden;}
+.story-box-pattern{width:100%;height:100%;background-image:repeating-linear-gradient(45deg,transparent,transparent 28px,rgba(181,146,74,.04) 28px,rgba(181,146,74,.04) 29px);}
+.story-box-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+.story-wm{font-family:'Cormorant Garamond',serif;font-size:9rem;font-weight:300;color:rgba(181,146,74,.1);line-height:1;letter-spacing:.05em;}
+.story-est{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(181,146,74,.4);margin-top:.5rem;}
+.story-text p{font-size:.92rem;font-weight:300;line-height:1.95;color:rgba(244,239,230,.58);margin-bottom:1.2rem;}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem;}
+.sr-item{background:var(--charcoal2);padding:2rem 1.5rem;text-align:center;}
+.sr-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);display:block;line-height:1;}
+.sr-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,230,.4);margin-top:.4rem;display:block;}
+
+/* LEADERSHIP */
+#leadership{background:var(--charcoal);}
+.lead-header{margin-bottom:4rem;}
+.lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.lead-card{border:1px solid var(--border);padding:3rem 2.8rem;transition:border-color .3s;position:relative;overflow:hidden;}
+.lead-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.lead-card:hover{border-color:rgba(181,146,74,.4);}
+.lead-card:hover::before{transform:scaleX(1);}
+.lead-role{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block;}
+.lead-card h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:.5rem;}
+.lead-quals{font-size:.78rem;color:rgba(244,239,230,.45);margin-bottom:1.8rem;font-weight:300;font-style:italic;}
+.lead-attrs{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);}
+.lead-attr{display:flex;gap:1rem;align-items:flex-start;}
+.lead-attr-num{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);opacity:.6;line-height:1;min-width:24px;}
+.lead-attr-body h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;font-weight:500;}
+.lead-attr-body p{font-size:.8rem;color:rgba(244,239,230,.48);line-height:1.72;font-weight:300;}
+
+/* CAPABILITIES */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.cap-item{background:var(--black);padding:2.5rem 2.2rem;transition:background .3s;position:relative;overflow:hidden;}
+.cap-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.cap-item:hover{background:#111009;}
+.cap-item:hover::after{transform:scaleX(1);}
+.cap-n{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(181,146,74,.12);line-height:1;margin-bottom:1.2rem;display:block;}
+.cap-item h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:400;margin-bottom:.8rem;}
+.cap-item p{font-size:.82rem;color:rgba(244,239,230,.48);line-height:1.8;font-weight:300;}
+
+/* APPROACH */
+#approach{background:var(--charcoal);}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.approach-quote{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;line-height:1.55;color:rgba(244,239,230,.75);border-left:3px solid var(--gold);padding-left:2rem;margin-bottom:3rem;}
+.approach-pillars{display:flex;flex-direction:column;gap:1.8rem;}
+.pillar{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;align-items:start;}
+.pillar-icon{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;flex-shrink:0;}
+.pillar h4{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;font-weight:500;}
+.pillar p{font-size:.82rem;color:rgba(244,239,230,.48);line-height:1.78;font-weight:300;}
+
+/* JV */
+.jv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:4rem;}
+.jv-card{border:1px solid var(--border);padding:2.4rem;transition:border-color .3s;}
+.jv-card:hover{border-color:var(--gold);}
+.jv-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:rgba(181,146,74,.3);display:block;margin-bottom:1rem;line-height:1;}
+.jv-card h3{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:.8rem;color:var(--cream);}
+.jv-card p{font-size:.82rem;color:rgba(244,239,230,.5);line-height:1.78;font-weight:300;}
+
+/* CTA */
+.cta-strip{background:var(--gold);padding:5rem 4rem;text-align:center;}
+.cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;color:var(--black);margin-bottom:1rem;line-height:1.1;}
+.cta-strip p{font-size:.88rem;color:rgba(12,11,9,.55);margin-bottom:2.2rem;font-weight:300;}
+.btn-dk{display:inline-block;background:var(--black);color:var(--cream);padding:.95rem 2.6rem;font-size:.71rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:background .25s;margin:0 .5rem;}
+.btn-dk:hover{background:var(--charcoal);}
+.btn-dk2{display:inline-block;border:2px solid var(--black);color:var(--black);padding:.95rem 2.6rem;font-size:.71rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:background .25s;margin:0 .5rem;}
+.btn-dk2:hover{background:rgba(0,0,0,.1);}
+
+/* FOOTER */
+footer{background:#070604;padding:4rem;border-top:1px solid var(--border);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.fb .logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;letter-spacing:.32em;color:var(--gold);display:block;margin-bottom:.85rem;}
+.fb p{font-size:.77rem;color:rgba(244,239,230,.28);line-height:1.88;max-width:265px;font-weight:300;}
+.fb .lic{margin-top:1.1rem;font-size:.62rem;color:rgba(244,239,230,.2);letter-spacing:.07em;}
+.fc h5{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;font-weight:500;}
+.fc ul{list-style:none;}
+.fc ul li{margin-bottom:.65rem;}
+.fc ul li a{font-size:.79rem;color:rgba(244,239,230,.35);text-decoration:none;font-weight:300;transition:color .2s;}
+.fc ul li a:hover{color:var(--gold);}
+.fbtm{background:#070604;border-top:1px solid rgba(181,146,74,.07);padding:1.4rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.fbtm p{font-size:.67rem;color:rgba(244,239,230,.18);letter-spacing:.07em;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease;}
+.rev.vis{opacity:1;transform:translateY(0);}
+
+@media(max-width:960px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .ham{display:flex;}
+  section{padding:4rem 1.5rem;}
+  .page-hero{padding:8rem 1.5rem 4rem;}
+  .story-grid,.lead-grid,.approach-grid{grid-template-columns:1fr;}
+  .story-visual{height:260px;}
+  .cap-grid,.jv-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  footer{grid-template-columns:1fr 1fr;padding:3rem 1.5rem;}
+  .fbtm{padding:1.2rem 1.5rem;flex-direction:column;gap:.4rem;text-align:center;}
+  .cta-strip{padding:4rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="mmenu" id="mm">
+  <span class="mclose" onclick="closeMM()">✕</span>
+  <a href="index.html" onclick="closeMM()">Home</a>
+  <a href="about.html" onclick="closeMM()">About</a>
+  <a href="index.html#services" onclick="closeMM()">Services</a>
+  <a href="portfolio.html" onclick="closeMM()">Portfolio</a>
+  <a href="index.html#contact" onclick="closeMM()">Contact</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">TURYN</a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Enquire</a></li>
+  </ul>
+  <div class="ham" onclick="openMM()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-vline"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About</div>
+    <h1>A Sydney Builder,<br><em>Established</em> 2015.</h1>
+    <p>Ten years of growth — built on 17+ years of director expertise in building, engineering, and construction management across metropolitan Sydney.</p>
+  </div>
+  <div class="page-hero-wm">TURYN</div>
+</div>
+
+<!-- STORY -->
+<section>
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-visual rev">
+        <div class="story-box-outer"></div>
+        <div class="story-box-inner">
+          <div class="story-box-pattern"></div>
+          <div class="story-box-center">
+            <div class="story-wm">T</div>
+            <div class="story-est">Est. 2015 · Sydney</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-text rev">
+        <div class="ew">Our Story</div>
+        <h2 class="st">Built on Technical <em>Depth</em> &amp; Hands-On Delivery</h2>
+        <p>TURYN Pty Ltd was established in 2015 as a Sydney-based residential building company. Although the company itself is ten years young, it is led by two directors who are both licensed builders and qualified civil engineers, with extensive prior experience across building, engineering, and construction management.</p>
+        <p>Our portfolio covers freestanding homes, knockdown rebuilds, duplex developments, extensions and renovations, and lower-density residential subdivisions across metropolitan Sydney. We have a particular reputation for duplex projects and high-quality renovation works, and act as a trusted joint-venture partner for private investors.</p>
+        <p>Our approach is built on technical depth, hands-on involvement, and a minimal record of client complaints across every project we deliver.</p>
+        <div class="stats-row">
+          <div class="sr-item"><span class="sr-num">10</span><span class="sr-lbl">Years · TURYN</span></div>
+          <div class="sr-item"><span class="sr-num">17+</span><span class="sr-lbl">Years · Directors</span></div>
+          <div class="sr-item"><span class="sr-num">15+</span><span class="sr-lbl">Projects Delivered</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="wrap">
+    <div class="lead-header rev">
+      <div class="ew">The People Behind the Build</div>
+      <h2 class="st">Two Directors, <em>One</em> Standard.</h2>
+      <p class="sb" style="margin-top:.5rem;">TURYN is led by two directors who are both licensed builders and university-qualified civil engineers, with more than seventeen years of combined experience across building, engineering, and construction management.</p>
+    </div>
+    <div class="lead-grid">
+      <div class="lead-card rev">
+        <span class="lead-role">Director & Licensed Builder</span>
+        <h3>Director One</h3>
+        <div class="lead-quals">B.Eng (Civil) · NSW Builder Licence No. 343795C</div>
+        <p style="font-size:.85rem;color:rgba(244,239,230,.55);font-weight:300;line-height:1.82;">A university-qualified civil engineer and licensed builder with over seventeen years of practical experience across residential and commercial construction. Personally involved on every TURYN project from contract signing through to final handover.</p>
+        <div class="lead-attrs">
+          <div class="lead-attr">
+            <div class="lead-attr-num">01</div>
+            <div class="lead-attr-body"><h4>Dual Qualifications</h4><p>Holds a current NSW builder licence and a university degree in Civil Engineering — a combination that underpins every structural and technical decision on site.</p></div>
+          </div>
+          <div class="lead-attr">
+            <div class="lead-attr-num">02</div>
+            <div class="lead-attr-body"><h4>Hands-On Delivery</h4><p>Personally present on every TURYN project — from the first site meeting through to defects walkthrough and client handover.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="lead-card rev">
+        <span class="lead-role">Director & Licensed Builder</span>
+        <h3>Director Two</h3>
+        <div class="lead-quals">B.Eng (Civil) · NSW Builder Licence No. 343795C</div>
+        <p style="font-size:.85rem;color:rgba(244,239,230,.55);font-weight:300;line-height:1.82;">A licensed builder and civil engineer with extensive experience on both low-rise residential and high-rise commercial projects with established construction companies across Sydney. Brings rigorous project management discipline to every TURYN build.</p>
+        <div class="lead-attrs">
+          <div class="lead-attr">
+            <div class="lead-attr-num">03</div>
+            <div class="lead-attr-body"><h4>Building & Engineering</h4><p>17+ years of practical experience across building, engineering, and construction management — on both low-rise residential and high-rise commercial projects.</p></div>
+          </div>
+          <div class="lead-attr">
+            <div class="lead-attr-num">04</div>
+            <div class="lead-attr-body"><h4>Client Track Record</h4><p>A consistent record of repeat business, strong referrals, and minimal formal complaints across every project completed under the TURYN name.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section>
+  <div class="wrap">
+    <div class="rev" style="margin-bottom:4rem;">
+      <div class="ew">What We Build</div>
+      <h2 class="st">Five Focused Areas of <em>Residential</em> Expertise</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-item rev">
+        <span class="cap-n">01</span>
+        <h3>Freestanding Houses</h3>
+        <p>Custom single dwellings built to client specifications — from contemporary architectural homes to traditional family residences. Every design begins with a blank page.</p>
+      </div>
+      <div class="cap-item rev">
+        <span class="cap-n">02</span>
+        <h3>Knockdown Rebuilds</h3>
+        <p>End-to-end demolition and rebuild on existing residential lots, including service disconnections and full utility re-establishment. Stay in the street you love.</p>
+      </div>
+      <div class="cap-item rev">
+        <span class="cap-n">03</span>
+        <h3>Duplex Developments</h3>
+        <p>A core strength of the business. Side-by-side and attached duplex projects with dual-occupancy approvals and Torrens-title subdivisions across greater Sydney.</p>
+      </div>
+      <div class="cap-item rev">
+        <span class="cap-n">04</span>
+        <h3>Extensions & Renovations</h3>
+        <p>Ground-floor and first-floor additions, full home renovations, and structural alterations — delivered with precision and minimal disruption to your daily life.</p>
+      </div>
+      <div class="cap-item rev">
+        <span class="cap-n">05</span>
+        <h3>Subdivisions</h3>
+        <p>Lower-density residential subdivision works with civil works, service provisioning, and dwelling construction on subdivided lots across the metropolitan area.</p>
+      </div>
+      <div class="cap-item rev" style="display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:1rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(181,146,74,.15);">T</div>
+        <p style="font-size:.82rem;color:rgba(244,239,230,.35);line-height:1.8;font-weight:300;max-width:220px;">NSW Builder Licence No. 343795C · ABN 60 606 472 593</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="wrap">
+    <div class="approach-grid">
+      <div class="rev">
+        <div class="ew">The TURYN Approach</div>
+        <h2 class="st">Discipline. Communication. <em>Quality.</em></h2>
+        <div class="approach-quote">"Every project is treated as a relationship, not a transaction. From first sketch to final handover, the directors are personally involved."</div>
+        <p class="sb">TURYN has a particular strength in duplex developments and extension/renovation works, where attention to detail, scheduling discipline, and clear client communication are essential to a successful outcome.</p>
+      </div>
+      <div class="approach-pillars rev">
+        <div class="pillar">
+          <div class="pillar-icon">D</div>
+          <div><h4>Delivery</h4><p>Projects are managed with disciplined scheduling and clear scope control. Our directors are on-site throughout, ensuring quality at every stage of construction.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">C</div>
+          <div><h4>Client Relationships</h4><p>We maintain a minimal record of formal client complaints. Transparent communication, regular site updates, and clear scope management throughout every build.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">F</div>
+          <div><h4>Financial Discipline</h4><p>Projects are delivered with disciplined cost control and transparent progress claims. We work professionally with lenders and quantity surveyors throughout construction.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">Q</div>
+          <div><h4>Compliance & Quality</h4><p>All works are completed in accordance with the National Construction Code and relevant Australian Standards. TURYN holds NSW Builder Licence No. 343795C.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR JV -->
+<section style="background:var(--black);">
+  <div class="wrap">
+    <div class="rev" style="margin-bottom:1rem;">
+      <div class="ew">Partnerships</div>
+      <h2 class="st">Investor Partnerships &amp; <em>Joint Ventures</em></h2>
+      <p class="sb">Beyond client commissions, TURYN partners with private investors to source, develop, and deliver residential projects under joint-venture arrangements — combining our construction expertise with investor capital to unlock value across Sydney's residential market.</p>
+    </div>
+    <div class="jv-grid">
+      <div class="jv-card rev">
+        <span class="jv-num">01</span>
+        <h3>Buyer's Agent</h3>
+        <p>We identify, assess, and acquire suitable development sites on behalf of investor partners — with a focus on duplex, knockdown-rebuild, and subdivision opportunities across metropolitan Sydney.</p>
+      </div>
+      <div class="jv-card rev">
+        <span class="jv-num">02</span>
+        <h3>Licensed Builder</h3>
+        <p>TURYN delivers the construction phase end-to-end under our NSW Builder Licence No. 343795C, with full project management, trade coordination, and quality control throughout.</p>
+      </div>
+      <div class="jv-card rev">
+        <span class="jv-num">03</span>
+        <h3>Developer Partner</h3>
+        <p>We coordinate the full development cycle — town planning, design management, certification, and construction — through to project completion and sale or settlement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to Start a Conversation?</h2>
+  <p>Book a complimentary consultation with TURYN's directors. No obligation, no pressure.</p>
+  <a href="index.html#contact" class="btn-dk">Enquire Now</a>
+  <a href="portfolio.html" class="btn-dk2">View Portfolio</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fb"><span class="logo">TURYN</span><p>Boutique residential builder delivering extraordinary homes across metropolitan Sydney. Led by licensed builders and civil engineers with 17+ years of combined expertise.</p><div class="lic">TURYN Pty Ltd · Lic. 343795C · ABN 60 606 472 593 · ACN 606 472 593</div></div>
+  <div class="fc"><h5>Services</h5><ul><li><a href="index.html#services">Freestanding Homes</a></li><li><a href="index.html#services">Knockdown Rebuilds</a></li><li><a href="index.html#services">Duplex Developments</a></li><li><a href="index.html#services">Extensions & Renovations</a></li><li><a href="index.html#services">Subdivisions</a></li></ul></div>
+  <div class="fc"><h5>Company</h5><ul><li><a href="about.html">About TURYN</a></li><li><a href="about.html#leadership">Leadership</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="index.html#process">Our Process</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+  <div class="fc"><h5>Connect</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Houzz</a></li></ul></div>
+</footer>
+<div class="fbtm"><p>© 2025 TURYN Pty Ltd. All rights reserved.</p><p>Privacy Policy · Terms of Use</p></div>
+
+<script>
+function openMM(){document.getElementById('mm').classList.add('open');}
+function closeMM(){document.getElementById('mm').classList.remove('open');}
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}});},{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
