@@ -476,9 +476,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
         <div class="cii"><div class="cl">Building Area</div><div class="cv">Metropolitan Sydney & surrounds</div></div>
       </div>
     </div>
-    <form class="cf rev" id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
-      <input type="hidden" name="_subject" value="Enquiry from website">
-      <input type="hidden" name="_replyto" value="info@turyn.com.au">
+    <form class="cf rev" id="contact-form" action="https://script.google.com/macros/s/AKfycbzaZWDUZi7e7aptt75PaNTtRliNEwqWP9Nf0WpLGYjcZNTeHnr5ec8jWsZi3QSsIitT8w/exec" method="POST">
       <div class="fr">
         <div class="ff"><label>First Name</label><input type="text" name="first_name" placeholder="James" required></div>
         <div class="ff"><label>Last Name</label><input type="text" name="last_name" placeholder="Wilson" required></div>
@@ -505,18 +503,14 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
       fetch(form.action, {
         method: 'POST',
         body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(res) {
-        if (res.ok) {
-          status.style.display = 'block';
-          status.style.color = 'var(--gold)';
-          status.textContent = '✓ Thank you — we'll be in touch within one business day.';
-          form.reset();
-          btn.textContent = 'Send Enquiry';
-          btn.disabled = false;
-        } else {
-          throw new Error('Server error');
-        }
+        mode: 'no-cors'
+      }).then(function() {
+        status.style.display = 'block';
+        status.style.color = 'var(--gold)';
+        status.textContent = '✓ Thank you — we\'ll be in touch within one business day.';
+        form.reset();
+        btn.textContent = 'Send Enquiry';
+        btn.disabled = false;
       }).catch(function() {
         status.style.display = 'block';
         status.style.color = '#e07070';
