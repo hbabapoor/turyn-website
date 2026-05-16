@@ -178,7 +178,7 @@ section{padding:7rem 4rem;}
 /* SERVICES */
 #services{background:var(--charcoal);}
 .srh{max-width:1360px;margin:0 auto 4.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;}
-.srg{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.srg{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}
 .src{background:var(--charcoal);padding:2.7rem 2.3rem;position:relative;overflow:hidden;transition:background .3s;}
 .src::after{content:'';position:absolute;left:0;bottom:0;width:3px;height:0;background:var(--gold);transition:height .4s;}
 .src:hover{background:#242018;}
@@ -279,7 +279,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
   section{padding:5rem 1.5rem;}
   .hero-content{padding:calc(76px + 2rem) 1.5rem 6rem;}
   .hero-scroll{display:none;}
-  .srh,.srg,.prh,.tg,.ppg,.cg{grid-template-columns:1fr;}
+  .srh,.srg,.prh,.tg,.ppg,.cg{grid-template-columns:1fr!important;}
   .fr{grid-template-columns:1fr;}
   .statsbar{flex-wrap:wrap;}
   .stat{flex:1 1 50%;border-bottom:1px solid var(--border);}
@@ -317,7 +317,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
     <li><a href="index.html#process">Process</a></li>
     <li><a href="index.html#contact" class="nav-cta">Enquire</a></li>
   </ul>
-  <div class="ham" onclick="openMM()"><span></span><span></span><span></span></div>
+  <div class="ham" onclick="toggleMM()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO — Full-bleed photo -->
@@ -361,7 +361,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
   <div class="srh rev">
     <div>
       <div class="ew">What We Build</div>
-      <h2 class="st">Five Areas of <em>Focused</em> Expertise</h2>
+      <h2 class="st">Four Areas of <em>Focused</em> Expertise</h2>
     </div>
     <p class="sb">Our capabilities span the full spectrum of bespoke residential construction across metropolitan Sydney — from intimate family homes to complex dual-occupancy and joint-venture developments.</p>
   </div>
@@ -476,20 +476,56 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
         <div class="cii"><div class="cl">Building Area</div><div class="cv">Metropolitan Sydney & surrounds</div></div>
       </div>
     </div>
-    <form class="cf rev" onsubmit="return false;">
+    <form class="cf rev" id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+      <input type="hidden" name="_subject" value="Enquiry from website">
+      <input type="hidden" name="_replyto" value="info@turyn.com.au">
       <div class="fr">
-        <div class="ff"><label>First Name</label><input type="text" placeholder="James"></div>
-        <div class="ff"><label>Last Name</label><input type="text" placeholder="Wilson"></div>
+        <div class="ff"><label>First Name</label><input type="text" name="first_name" placeholder="James" required></div>
+        <div class="ff"><label>Last Name</label><input type="text" name="last_name" placeholder="Wilson" required></div>
       </div>
       <div class="fr">
-        <div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-        <div class="ff"><label>Phone</label><input type="tel" placeholder="04__ ___ ___"></div>
+        <div class="ff"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="ff"><label>Phone</label><input type="tel" name="phone" placeholder="04__ ___ ___"></div>
       </div>
-      <div class="ff"><label>Project Type</label><select><option value="" disabled selected>Select a service</option><option>Freestanding Custom Home</option><option>Knockdown Rebuild</option><option>Duplex Development</option><option>Extension & Renovation</option><option>Subdivision</option><option>Investor Joint Venture</option></select></div>
-      <div class="ff"><label>Budget Range</label><select><option value="" disabled selected>Approximate budget</option><option>$500k – $800k</option><option>$800k – $1.2M</option><option>$1.2M – $2M</option><option>$2M – $3M</option><option>$3M+</option></select></div>
-      <div class="ff"><label>Tell Us About Your Vision</label><textarea placeholder="Describe your project, site, style preferences, or any questions…"></textarea></div>
-      <button type="submit" class="btn-g" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Jost',sans-serif;">Send Enquiry</button>
+      <div class="ff"><label>Project Type</label><select name="project_type"><option value="" disabled selected>Select a service</option><option>Freestanding Custom Home</option><option>Knockdown Rebuild</option><option>Duplex Development</option><option>Extension & Renovation</option><option>Subdivision</option><option>Investor Joint Venture</option></select></div>
+      <div class="ff"><label>Budget Range</label><select name="budget"><option value="" disabled selected>Approximate budget</option><option>$500k – $800k</option><option>$800k – $1.2M</option><option>$1.2M – $2M</option><option>$2M – $3M</option><option>$3M+</option></select></div>
+      <div class="ff"><label>Tell Us About Your Vision</label><textarea name="message" placeholder="Describe your project, site, style preferences, or any questions…"></textarea></div>
+      <div id="form-status" style="font-size:.82rem;color:var(--gold);display:none;margin-top:.5rem;"></div>
+      <button type="submit" id="form-btn" class="btn-g" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Jost',sans-serif;">Send Enquiry</button>
     </form>
+    <script>
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    var btn = document.getElementById('form-btn');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          status.style.display = 'block';
+          status.style.color = 'var(--gold)';
+          status.textContent = '✓ Thank you — we'll be in touch within one business day.';
+          form.reset();
+          btn.textContent = 'Send Enquiry';
+          btn.disabled = false;
+        } else {
+          throw new Error('Server error');
+        }
+      }).catch(function() {
+        status.style.display = 'block';
+        status.style.color = '#e07070';
+        status.textContent = 'Something went wrong. Please email us directly at info@turyn.com.au';
+        btn.textContent = 'Send Enquiry';
+        btn.disabled = false;
+      });
+    });
+    </script>
   </div>
 </section>
 
@@ -505,6 +541,8 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
 <script>
 function openMM(){document.getElementById('mm').classList.add('open');}
 function closeMM(){document.getElementById('mm').classList.remove('open');}
+function toggleMM(){document.getElementById('mm').classList.toggle('open');}
+document.addEventListener('click',function(e){var mm=document.getElementById('mm');if(mm.classList.contains('open')&&!mm.contains(e.target)&&!e.target.closest('.ham')){closeMM();}});
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}});},{threshold:.1});
 document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(el=>io.observe(el));
 </script>
