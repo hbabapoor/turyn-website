@@ -254,6 +254,24 @@ section{padding:7rem 4rem;}
 .ff select option{background:var(--charcoal);}
 .ff textarea{resize:vertical;min-height:108px;}
 
+/* BLOG */
+#blog{background:var(--black);}
+.blmax{max-width:1360px;margin:0 auto;}
+.blh{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4.5rem;}
+.blg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.blc{background:var(--charcoal);border:1px solid var(--border);display:flex;flex-direction:column;text-decoration:none;color:var(--cream);transition:border-color .3s,transform .3s;}
+.blc:hover{border-color:var(--gold);transform:translateY(-4px);}
+.blimg{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:brightness(.85);transition:filter .3s;}
+.blc:hover .blimg{filter:brightness(1);}
+.blbody{padding:1.8rem 1.8rem 2rem;display:flex;flex-direction:column;flex:1;}
+.bltag{font-size:.58rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:block;}
+.blc h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;line-height:1.22;margin-bottom:.8rem;}
+.blc p{font-size:.82rem;font-weight:300;line-height:1.78;color:rgba(244,239,230,.52);margin-bottom:1.4rem;flex:1;}
+.blmeta{font-size:.63rem;letter-spacing:.12em;color:rgba(244,239,230,.3);}
+.blread{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem;display:inline-block;}
+.blmore{display:inline-block;margin-top:2.5rem;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold-dim);padding-bottom:.2rem;text-decoration:none;}
+.blmore:hover{border-color:var(--gold);}
+
 /* FOOTER */
 footer{background:#070604;padding:4rem;border-top:1px solid var(--border);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
 .fb .logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;letter-spacing:.32em;color:var(--gold);display:block;margin-bottom:.85rem;}
@@ -305,6 +323,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
   <a href="index.html#services" onclick="closeMM()">Services</a>
   <a href="portfolio.html" onclick="closeMM()">Portfolio</a>
   <a href="index.html#process" onclick="closeMM()">Process</a>
+  <a href="index.html#blog" onclick="closeMM()">Blog</a>
   <a href="index.html#contact" onclick="closeMM()">Contact</a>
 </div>
 
@@ -315,6 +334,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
     <li><a href="index.html#services">Services</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
     <li><a href="index.html#contact" class="nav-cta">Enquire</a></li>
   </ul>
   <div class="ham" onclick="toggleMM()"><span></span><span></span><span></span></div>
@@ -520,6 +540,52 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
       });
     });
     </script>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" style="padding:7rem 4rem;">
+  <div class="blmax">
+    <div class="blh">
+      <div class="rev">
+        <div class="ew">Insights &amp; Ideas</div>
+        <h2 class="st">The TURYN <em>Journal</em></h2>
+      </div>
+      <p class="sb rev">Practical guidance, design inspiration and industry insights — written by our directors for homeowners and investors planning to build or renovate in Sydney.</p>
+    </div>
+    <div class="blg">
+      <a href="posts/knockdown-rebuild.html" class="blc rev" style="transition-delay:.05s">
+        <img class="blimg" src="images/blog/blog1.jpg" alt="Knockdown rebuild guide Sydney" loading="lazy" decoding="async">
+        <div class="blbody">
+          <span class="bltag">Knockdown Rebuild</span>
+          <h3>Is a Knockdown Rebuild Right for You?</h3>
+          <p>Before you commit, here's what Sydney homeowners need to understand about costs, council approvals and timelines.</p>
+          <div class="blmeta">June 2025 · 5 min read</div>
+          <span class="blread">Read Article →</span>
+        </div>
+      </a>
+      <a href="posts/choosing-finishes.html" class="blc rev" style="transition-delay:.15s">
+        <img class="blimg" src="images/blog/blog2.jpg" alt="Luxury home finishes guide" loading="lazy" decoding="async">
+        <div class="blbody">
+          <span class="bltag">Design &amp; Finishes</span>
+          <h3>Choosing Finishes That Stand the Test of Time</h3>
+          <p>Stone, timber, joinery and hardware — a builder's guide to selections that look as good in ten years as they do on day one.</p>
+          <div class="blmeta">May 2025 · 4 min read</div>
+          <span class="blread">Read Article →</span>
+        </div>
+      </a>
+      <a href="posts/duplex-development.html" class="blc rev" style="transition-delay:.25s">
+        <img class="blimg" src="images/blog/blog3.jpg" alt="Sydney duplex development guide" loading="lazy" decoding="async">
+        <div class="blbody">
+          <span class="bltag">Investor Guide</span>
+          <h3>Duplex Development in Sydney: What You Need to Know</h3>
+          <p>From zoning checks to DA approvals and build costs — a practical overview for investors considering dual occupancy.</p>
+          <div class="blmeta">April 2025 · 6 min read</div>
+          <span class="blread">Read Article →</span>
+        </div>
+      </a>
+    </div>
+    <a href="blog.html" class="blmore">View All Articles →</a>
   </div>
 </section>
 
