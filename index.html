@@ -620,7 +620,7 @@ document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(el=>io.observe(el));
 })();
 
 // Load latest 3 posts from posts.json
-fetch('posts.json')
+fetch('/turyn-website/posts.json')
   .then(r => r.json())
   .then(posts => {
     const grid = document.getElementById('blg-home');
