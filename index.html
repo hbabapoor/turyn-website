@@ -619,28 +619,72 @@ document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(el=>io.observe(el));
   io.observe(statsbar);
 })();
 
-// Load latest 3 posts from posts.json
-fetch('/turyn-website/posts.json')
-  .then(r => r.json())
-  .then(posts => {
-    const grid = document.getElementById('blg-home');
-    if(!grid) return;
-    grid.innerHTML = posts.slice(0, 3).map((p, i) => `
-      <a href="posts/${p.slug}.html" class="blc rev" style="transition-delay:${(i * 0.1 + 0.05).toFixed(2)}s">
-        <img class="blimg" src="${p.image}" alt="${p.imageAlt}" loading="lazy" decoding="async">
-        <div class="blbody">
-          <span class="bltag">${p.tag}</span>
-          <h3>${p.title}</h3>
-          <p>${p.excerpt}</p>
-          <div class="blmeta">${p.date} · ${p.readtime}</div>
-          <span class="blread">Read Article →</span>
-        </div>
-      </a>`).join('');
-    const revIo = new IntersectionObserver(e => {
-      e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('vis'); revIo.unobserve(x.target); }});
-    }, {threshold:.1});
-    grid.querySelectorAll('.rev').forEach(el => revIo.observe(el));
-  });
+// =============================================
+// POSTS LIST — keep in sync with blog.html
+// Add new posts at the TOP. Index shows first 3.
+// =============================================
+const POSTS = [
+  {
+    slug: "custom-home-builders-north-shore",
+    title: "Custom Home Builders North Shore: What to Know Before You Commit",
+    tag: "Knockdown Rebuild",
+    excerpt: "How to find and vet custom home builders on Sydney's North Shore — what builds cost in 2026, how long the DA really takes, and when a custom builder is the wrong choice entirely.",
+    date: "June 2026",
+    readtime: "8 min read",
+    image: "https://images.pexels.com/photos/18974425/pexels-photo-18974425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=338&w=600",
+    imageAlt: "Aerial view of luxury homes along the Sydney coastline"
+  },
+  {
+    slug: "duplex-development",
+    title: "Duplex Development in Sydney: What You Need to Know",
+    tag: "Investor Guide",
+    excerpt: "From zoning checks to DA approvals and build costs — a practical overview for investors considering dual occupancy.",
+    date: "April 2025",
+    readtime: "6 min read",
+    image: "images/blog/blog3.jpg",
+    imageAlt: "Sydney duplex development guide"
+  },
+  {
+    slug: "choosing-finishes",
+    title: "Choosing Finishes That Stand the Test of Time",
+    tag: "Design & Finishes",
+    excerpt: "Stone, timber, joinery and hardware — a builder's guide to selections that look as good in ten years as they do on day one.",
+    date: "May 2025",
+    readtime: "4 min read",
+    image: "images/blog/blog2.jpg",
+    imageAlt: "Luxury home finishes guide"
+  },
+  {
+    slug: "knockdown-rebuild",
+    title: "Is a Knockdown Rebuild Right for You?",
+    tag: "Knockdown Rebuild",
+    excerpt: "Before you commit, here's what Sydney homeowners need to understand about costs, council approvals and timelines.",
+    date: "June 2025",
+    readtime: "5 min read",
+    image: "images/blog/blog1.jpg",
+    imageAlt: "Knockdown rebuild guide Sydney"
+  }
+];
+
+// Render latest 3 posts on homepage
+const grid = document.getElementById('blg-home');
+if(grid) {
+  grid.innerHTML = POSTS.slice(0, 3).map((p, i) => `
+    <a href="posts/${p.slug}.html" class="blc rev" style="transition-delay:${(i * 0.1 + 0.05).toFixed(2)}s">
+      <img class="blimg" src="${p.image}" alt="${p.imageAlt}" loading="lazy" decoding="async">
+      <div class="blbody">
+        <span class="bltag">${p.tag}</span>
+        <h3>${p.title}</h3>
+        <p>${p.excerpt}</p>
+        <div class="blmeta">${p.date} · ${p.readtime}</div>
+        <span class="blread">Read Article →</span>
+      </div>
+    </a>`).join('');
+  const revIo = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('vis'); revIo.unobserve(x.target); }});
+  }, {threshold:.1});
+  grid.querySelectorAll('.rev').forEach(el => revIo.observe(el));
+}
 </script>
 </body>
 </html>
