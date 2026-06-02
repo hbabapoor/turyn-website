@@ -145,7 +145,7 @@ function closeMM(){document.getElementById('mm').classList.remove('open');}
 function toggleMM(){document.getElementById('mm').classList.toggle('open');}
 
 // Load all posts from posts.json and render cards
-fetch('posts.json')
+fetch('/turyn-website/posts.json')
   .then(r => r.json())
   .then(posts => {
     const grid = document.getElementById('blg');
