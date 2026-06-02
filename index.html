@@ -6,7 +6,8 @@
 <title>TURYN â€“ Boutique Custom Builder Â· Sydney</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{--black:#0c0b09;--cream:#f4efe6;--gold:#b5924a;--gold-light:#cead72;--gold-dim:rgba(181,146,74,.18);--charcoal:#1e1b16;--charcoal2:#252018;--border:rgba(181,146,74,.2);--border-b:rgba(181,146,74,.5);}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -639,6 +640,7 @@ const POSTS = [
     date: "June 2026",
     readtime: "9 min read",
     image: "images/blog/8583638.jpg",
+    thumb: "images/blog/8583638-thumb.jpg",
     imageAlt: "Modern suburban home with driveway in Carlingford, Sydney"
   },
   {
@@ -649,6 +651,7 @@ const POSTS = [
     date: "June 2026",
     readtime: "10 min read",
     image: "images/blog/15885540.jpg",
+    thumb: "images/blog/15885540-thumb.jpg",
     imageAlt: "Coastal cliff house with ocean views in Sydney's Eastern Suburbs"
   },
   {
@@ -659,6 +662,7 @@ const POSTS = [
     date: "June 2026",
     readtime: "8 min read",
     image: "images/blog/18974425.jpg",
+    thumb: "images/blog/18974425-thumb.jpg",
     imageAlt: "Aerial view of luxury homes along the Sydney coastline"
   },
   {
@@ -698,7 +702,7 @@ const grid = document.getElementById('blg-home');
 if(grid) {
   grid.innerHTML = POSTS.slice(0, 3).map((p, i) => `
     <a href="posts/${p.slug}.html" class="blc rev" style="transition-delay:${(i * 0.1 + 0.05).toFixed(2)}s">
-      <img class="blimg" src="${p.image}" alt="${p.imageAlt}" ${i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
+      <img class="blimg" src="${p.thumb || p.image}" alt="${p.imageAlt}" width="750" height="422" ${i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
       <div class="blbody">
         <span class="bltag">${p.tag}</span>
         <h3>${p.title}</h3>
