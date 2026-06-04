@@ -1,0 +1,98 @@
+{
+  "home-exterior": [
+    {"id":"4626268","alt":"Contemporary residential cottage exterior with lamps near walkway under twilight sky"},
+    {"id":"24524484","alt":"Lovely suburban houses with blue garage doors under cloudy sky surrounded by greenery"},
+    {"id":"8134848","alt":"Modern minimalist house with spacious driveway landscaped garden and clear blue sky"},
+    {"id":"7031594","alt":"Facade of contemporary luxury villa with lawn and green trees under blue sky"},
+    {"id":"24419877","alt":"Contemporary driveway with lush greenery leading to a modern home entrance"},
+    {"id":"7587470","alt":"Elegant brick house with lush garden and driveway under a clear sky"},
+    {"id":"8134846","alt":"Contemporary residence with sleek design large driveway and landscaped yard"},
+    {"id":"37416009","alt":"Modern geometric home facade with unique windows reflecting sky in Canberra Australia"},
+    {"id":"2999012","alt":"Charming home in Leura NSW featuring blooming trees and a white picket fence"},
+    {"id":"32133565","alt":"Striking modern curved building against a blue sky in Melbourne Australia"}
+  ],
+  "architect-plans": [
+    {"id":"6615234","alt":"Engineer reviewing architectural blueprints on a desk with technical drawings"},
+    {"id":"6285159","alt":"Architect analyzing building blueprints with tools on a desk showcasing planning and design"},
+    {"id":"5583253","alt":"Colorful pencils and ruler atop architectural blueprints on a workspace"},
+    {"id":"6615042","alt":"Architect evaluates blueprints on a desk showcasing modern workspace creativity"},
+    {"id":"6285150","alt":"Hands of an architect analyzing blueprints and financial graphs at a desk"},
+    {"id":"6281167","alt":"Architect diligently works on blueprints at a well-lit office desk with design tools"},
+    {"id":"4792480","alt":"Ruler with pencil and glasses placed on paper sheet of house plan for construction"},
+    {"id":"6894105","alt":"Top view of architect desk featuring blueprints laptop notebook and coffee cup"},
+    {"id":"6615028","alt":"Creative professional using a compass on blueprints at an office desk"},
+    {"id":"6615095","alt":"Architect hands reviewing architectural blueprints and design documents in an office"}
+  ],
+  "construction": [
+    {"id":"33405084","alt":"Interior view of a residential home under construction"},
+    {"id":"33043393","alt":"Wooden frames of new homes under construction during daylight"},
+    {"id":"32992819","alt":"New residential construction with wooden framing"},
+    {"id":"36586972","alt":"New house under construction showing wooden framing and building materials"},
+    {"id":"37627540","alt":"Two-story wooden house frame under construction on a clear sunny day"},
+    {"id":"17410716","alt":"Construction worker wearing safety gear walks on wooden framing at a construction site"},
+    {"id":"37510301","alt":"New suburban house under construction showing framing and development"},
+    {"id":"34192130","alt":"Wooden frames of new houses under construction in a subdivision"},
+    {"id":"33404353","alt":"Wooden house framing under construction during a cloudy day"},
+    {"id":"209266","alt":"Partially built wooden house under construction showcasing its progress and design"}
+  ],
+  "kitchen-interior": [
+    {"id":"7031879","alt":"Contemporary kitchen in beige and white with minimalist cabinets and marble table"},
+    {"id":"8142046","alt":"Elegant and modern kitchen with marble countertops and sleek design elements"},
+    {"id":"6903160","alt":"Interior of modern kitchen furnished with armchairs near counter decorated with flowers"},
+    {"id":"7535035","alt":"Sink with faucet on marble counter in modern stylish kitchen with white cabinets"},
+    {"id":"6587896","alt":"Interior of contemporary spacious kitchen with light expensive furniture"},
+    {"id":"18285887","alt":"Modern kitchen with dark wood cabinets and marble countertops emphasizing elegant design"},
+    {"id":"6538939","alt":"Interior of modern kitchen with white chairs near counter and black cabinets with oven"},
+    {"id":"6903155","alt":"Interior of contemporary kitchen with minimalist gray furniture and counter"},
+    {"id":"6980655","alt":"Modern kitchen with marble table and hood against electric appliances in light house"},
+    {"id":"6315799","alt":"Interior of stylish kitchen in modern style with table and stove with air extraction"}
+  ],
+  "duplex-townhouse": [
+    {"id":"5505133","alt":"A vibrant row of gable-roofed residential buildings with metal facades"},
+    {"id":"10628470","alt":"Row of modern suburban townhouses with clean driveways and blue sky backdrop"},
+    {"id":"7475598","alt":"Exterior of contemporary residential house with bushes and cars parked near pavement"},
+    {"id":"17858122","alt":"Vibrant townhouse facades in a city showcasing urban architecture and renovation"},
+    {"id":"19922933","alt":"Modern townhouse with metal facade on a quiet city street"},
+    {"id":"30683480","alt":"Vibrant townhouses showcasing modern residential architecture"},
+    {"id":"28403269","alt":"Charming modern townhouses at sunset"},
+    {"id":"7434644","alt":"Facade of contemporary residential house with windows and doors on street against cloudless sky"},
+    {"id":"2035398","alt":"Brick houses with rustic charm featuring distinct coloured doors"},
+    {"id":"10486073","alt":"Row of modern townhouses with spacious driveways and garage fronts under blue sky"}
+  ],
+  "family-homeowner": [
+    {"id":"36729696","alt":"Joyful couple with moving boxes holding keys to their new home"},
+    {"id":"7579192","alt":"A couple holding a key symbolizing new home ownership"},
+    {"id":"7579200","alt":"Joyful couple proudly holding keys to their new home symbolizing fresh beginnings"},
+    {"id":"7579211","alt":"Smiling couple holding keys celebrating home ownership"},
+    {"id":"8292853","alt":"Smiling couple celebrates new home purchase with keys"},
+    {"id":"8482895","alt":"Young couple celebrates buying their first house with keys in hand and a sold sign"},
+    {"id":"7937959","alt":"Close-up of a couple joyfully holding keys to their new home"},
+    {"id":"7579207","alt":"Smiling couple celebrates receiving keys to their new home"},
+    {"id":"7937957","alt":"Smiling couple wearing safety helmets holding keys symbolizing new home ownership"},
+    {"id":"7579202","alt":"A joyful couple celebrating their new home purchase by holding keys"}
+  ],
+  "consultation": [
+    {"id":"7937667","alt":"Real estate agent discussing with clients inside an empty property under construction"},
+    {"id":"8469993","alt":"A realtor with clients examining a floor plan outside a modern property"},
+    {"id":"8482547","alt":"Real estate agents discussing a property at a construction site"},
+    {"id":"8441820","alt":"Consultant discussing financial plans with clients in a modern office setting"},
+    {"id":"8439694","alt":"Clients and a consultant discussing documents and using a tablet in a modern office"},
+    {"id":"8112162","alt":"Business professionals discussing in a stylish modern office setting"},
+    {"id":"7489104","alt":"Business meeting showing diverse professionals discussing strategic options"},
+    {"id":"8439697","alt":"Business meeting at a wooden table with consultant reviewing documents and tablet"},
+    {"id":"8292897","alt":"Business consultation with clients and agent discussing contract indoors"},
+    {"id":"7876198","alt":"Lawyers consulting with clients in a modern office discussing legal matters"}
+  ],
+  "aerial-suburb": [
+    {"id":"34689484","alt":"Aerial image of a Sydney suburb with green trees residential houses and train tracks"},
+    {"id":"9310802","alt":"Aerial shot of a residential area surrounded by countryside"},
+    {"id":"624929","alt":"Beautiful aerial shot of a village with houses and trees during sunrise"},
+    {"id":"9310721","alt":"Aerial photograph of residential area and countryside during summer"},
+    {"id":"34973977","alt":"Aerial shot of a modern housing estate showcasing luxury homes and wide road"},
+    {"id":"1486785","alt":"Aerial view of a suburban neighborhood with houses roads and lush greenery"},
+    {"id":"18972775","alt":"Cityscape view of Bondi Beach capturing waves and urban structures"},
+    {"id":"36966274","alt":"Aerial view of a bridge spanning over a river connecting lush landscapes under blue sky"},
+    {"id":"34689482","alt":"Aerial view of Sydney featuring the iconic Harbor Bridge and urban landscape"},
+    {"id":"17091309","alt":"Aerial view of a coastal town with colourful houses and sea horizon at sunset"}
+  ]
+}
