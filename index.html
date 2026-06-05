@@ -642,7 +642,7 @@ const POSTS = [
     date: "June 2026",
     readtime: "16 min read",
     image: "images/blog/10486073.jpg",
-    thumb: "images/blog/10486073-thumb.jpg",
+    thumb: "images/blog/10486073-thumb.webp",
     imageAlt: "Row of modern duplex townhouses with spacious driveways and garage fronts on a Sydney street"
   },
   {
@@ -897,29 +897,24 @@ const POSTS = [
   }
 ];
 
-// Render latest 3 posts — deferred so it doesn't block the critical path
-setTimeout(function(){
+// Render latest 3 posts on homepage
+(function(){
   var grid = document.getElementById('blg-home');
   if(!grid) return;
   grid.innerHTML = POSTS.slice(0, 3).map(function(p, i){
     var src = p.thumb || p.image;
-    var webp = src.replace(/\.jpg$/, '.webp');
-    var lazy = i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"';
-    return '<a href="posts/' + p.slug + '.html" class="blc rev" style="transition-delay:' + (i * 0.1 + 0.05).toFixed(2) + 's">'
-      + '<picture><source srcset="' + webp + '" type="image/webp"><img class="blimg" src="' + src + '" alt="' + p.imageAlt + '" width="750" height="422" ' + lazy + '></picture>'
+    var attrs = i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"';
+    return '<a href="posts/' + p.slug + '.html" class="blc" style="transition-delay:' + (i * 0.1 + 0.05).toFixed(2) + 's">'
+      + '<img class="blimg" src="' + src + '" alt="' + p.imageAlt + '" width="750" height="422" ' + attrs + '>'
       + '<div class="blbody">'
       + '<span class="bltag">' + p.tag + '</span>'
       + '<h3>' + p.title + '</h3>'
       + '<p>' + p.excerpt + '</p>'
-      + '<div class="blmeta">' + p.date + ' · ' + p.readtime + '</div>'
+      + '<div class="blmeta">' + p.date + ' \xb7 ' + p.readtime + '</div>'
       + '<span class="blread">Read Article →</span>'
       + '</div></a>';
   }).join('');
-  var revIo = new IntersectionObserver(function(e){
-    e.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('vis'); revIo.unobserve(x.target); }});
-  }, {threshold:.1});
-  grid.querySelectorAll('.rev').forEach(function(el){ revIo.observe(el); });
-}, 0);
+})();
 </script>
 </body>
 </html>
