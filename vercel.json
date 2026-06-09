@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/blog/:slug",
+      "destination": "/posts/:slug",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",
