@@ -6,6 +6,7 @@
 <title>TURYN — Boutique Custom Builder · Sydney</title>
 <meta name="description" content="TURYN is a Sydney boutique builder specialising in custom homes, knockdown rebuilds, and duplex developments. Fixed-price contracts, director-led delivery, 17+ years combined experience.">
 <meta name="google-site-verification" content="ulPAGFPNuZ8N7rxZhh04TTC1JTFRavIuo1ROofHaw8w" />
+<link rel="preload" as="image" href="images/project-01.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/project-01.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -353,7 +354,10 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
 
   <!-- Full-bleed background image -->
   <div class="hero-panel-left">
-    <img class="hero-img-left" src="images/project-01.jpg" alt="TURYN luxury kitchen with fluted island and brass fixtures" loading="eager" fetchpriority="high">
+    <picture style="display:block;width:100%;height:100%">
+      <source srcset="images/project-01.webp" type="image/webp">
+      <img class="hero-img-left" src="images/project-01.jpg" alt="TURYN luxury kitchen with fluted island and brass fixtures" loading="eager" fetchpriority="high">
+    </picture>
   </div>
 
 
@@ -413,7 +417,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
     </div>
     <div class="ppg">
       <div class="ppc" style="transition-delay:.05s" onclick="window.location='portfolio.html'">
-        <div class="ppc-img"><img src="images/project-02.jpg" alt="16 & 18 MacKillop Drive"></div>
+        <div class="ppc-img"><picture style="display:block;width:100%;height:100%"><source srcset="images/project-02-card.webp" type="image/webp"><img src="images/project-02.jpg" alt="16 &amp; 18 MacKillop Drive" width="1333" height="1000" loading="lazy" decoding="async"></picture></div>
         <div class="ppb">
           <span class="pptag">Duplex · Joint Venture</span>
           <h3>16 & 18 MacKillop Drive</h3>
@@ -423,7 +427,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
         <div class="pparr">→</div>
       </div>
       <div class="ppc" style="transition-delay:.15s" onclick="window.location='portfolio.html'">
-        <div class="ppc-img"><img src="images/project-03.jpg" alt="7 McMillan Circuit Kellyville"></div>
+        <div class="ppc-img"><picture style="display:block;width:100%;height:100%"><source srcset="images/project-03-card.webp" type="image/webp"><img src="images/project-03.jpg" alt="7 McMillan Circuit Kellyville" width="1400" height="933" loading="lazy" decoding="async"></picture></div>
         <div class="ppb">
           <span class="pptag">Freestanding Home · Luxury</span>
           <h3>7 McMillan Circuit</h3>
@@ -433,7 +437,7 @@ footer{background:#070604;padding:4rem;border-top:1px solid var(--border);displa
         <div class="pparr">→</div>
       </div>
       <div class="ppc" style="transition-delay:.25s" onclick="window.location='portfolio.html'">
-        <div class="ppc-img"><img src="images/project-04.jpg" alt="2 Wood Bridge Palace Bella Vista"></div>
+        <div class="ppc-img"><picture style="display:block;width:100%;height:100%"><source srcset="images/project-04-card.webp" type="image/webp"><img src="images/project-04.jpg" alt="2 Wood Bridge Palace Bella Vista" width="1333" height="1000" loading="lazy" decoding="async"></picture></div>
         <div class="ppb">
           <span class="pptag">Freestanding Home · Luxury</span>
           <h3>2 Wood Bridge Palace</h3>
@@ -585,12 +589,14 @@ function openMM(){document.getElementById('mm').classList.add('open');}
 function closeMM(){document.getElementById('mm').classList.remove('open');}
 function toggleMM(){document.getElementById('mm').classList.toggle('open');}
 document.addEventListener('click',function(e){var mm=document.getElementById('mm');if(mm.classList.contains('open')&&!mm.contains(e.target)&&!e.target.closest('.ham')){closeMM();}});
+var _ric=window.requestIdleCallback||function(fn){setTimeout(fn,16)};
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}});},{threshold:.1});
-document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(el=>io.observe(el));
+_ric(function(){document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(function(el){io.observe(el);});});
 </script>
 
 <script>
-// Animated counter for stats
+// Animated counter for stats — deferred to idle so it doesn't block FCP/LCP
+_ric(function(){
 (function(){
   var observed = false;
   var statsbar = document.querySelector('.statsbar');
@@ -629,6 +635,7 @@ document.querySelectorAll('.rev,.ppc,.tc,.prs').forEach(el=>io.observe(el));
 
   io.observe(statsbar);
 })();
+}); // end _ric
 
 // =============================================
 // POSTS LIST — keep in sync with blog.html
@@ -964,13 +971,13 @@ const POSTS = [
   }
 ];
 
-// Render latest 3 posts on homepage
-(function(){
+// Render latest 3 posts — deferred to idle so it doesn't block FCP/LCP
+_ric(function(){
   var grid = document.getElementById('blg-home');
   if(!grid) return;
   grid.innerHTML = POSTS.slice(0, 3).map(function(p, i){
     var src = p.thumb || p.image;
-    var attrs = i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"';
+    var attrs = i === 0 ? 'loading="lazy" decoding="async"' : 'loading="lazy" decoding="async"';
     return '<a href="posts/' + p.slug + '.html" class="blc" style="transition-delay:' + (i * 0.1 + 0.05).toFixed(2) + 's">'
       + '<img class="blimg" src="' + src + '" alt="' + p.imageAlt + '" width="750" height="422" ' + attrs + '>'
       + '<div class="blbody">'
@@ -981,7 +988,7 @@ const POSTS = [
       + '<span class="blread">Read Article →</span>'
       + '</div></a>';
   }).join('');
-})();
+});
 </script>
 </body>
 </html>
